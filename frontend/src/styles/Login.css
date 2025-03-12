@@ -129,3 +129,34 @@ html, body {
         display: none;
     }
   }
+
+  @media (max-width: 1000px) { 
+    .logo {
+        display: none;
+    }
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50px; 
+    position: relative; 
+    margin-top: 25px;
+  }
+  
+  .error {
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .error.visible {
+    opacity: 1;
+  }
+  
+  .error.hidden {
+    opacity: 0;
+  }

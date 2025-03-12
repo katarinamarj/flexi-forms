@@ -2,4 +2,8 @@ controllers:
     resource:
         path: ../src/Controller/
         namespace: App\Controller
-    type: attribute
+    type: 
+login:
+    path: /login
+    controller: App\Controller\AuthController::login
+    methods: [POST, OPTIONS]

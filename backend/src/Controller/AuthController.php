@@ -33,6 +33,14 @@ final class AuthController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
 
+        $requiredFields = ['fullName', 'email', 'username', 'password'];
+
+        foreach ($requiredFields as $field) {
+            if (empty($data[$field])) {
+              return new JsonResponse(['message' =>  'All fields are required.'], 400);
+            }  
+        }
+
         if (!isset($data['fullName'], $data['email'], $data['username'], $data['password'])) {
             return new JsonResponse(['message' => 'All data must be entered.'], 400);
         }

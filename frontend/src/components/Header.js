@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Header.css";
 import { useNavigate } from 'react-router-dom';
 import { useLocation, Link } from "react-router-dom";
-import logo2 from '../logo2.png';
+import logo from '../images/logo.png';
 import { CgProfile } from "react-icons/cg";
 import { IoMdLogOut } from "react-icons/io";
 import { IoDocumentText } from "react-icons/io5";
@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <header className="header">
     <div className="logo-container">
-      <img src={logo2} alt="Logo" className="logo2" />
+      <img src={logo} alt="Logo" className="logo" />
     </div>
 
     {location.pathname === "/dashboard" ? (

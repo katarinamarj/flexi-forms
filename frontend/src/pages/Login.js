@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Login.css"; 
 import { useNavigate } from 'react-router-dom';
-import logo from '../logo.png';
+import logo from '../images/logo.png';
 
 const Login = () => {
 
@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     <div className="container">
-    <img src={logo} alt="Logo" className="logo" />
+    <img src={logo} alt="Logo" className="logo1" />
 
       <div className="left-side">
       <h1>Welcome to Flexi Forms</h1>

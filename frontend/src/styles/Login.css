@@ -116,7 +116,7 @@ html, body {
     color: #2c3424;
   }
      
-  .logo {
+  .logo1 {
     position: absolute;
     top: 20px;  
     left: 20px; 
@@ -125,13 +125,13 @@ html, body {
   }
   
   @media (max-width: 950px) { 
-    .logo {
+    .logo1 {
         display: none;
     }
   }
 
   @media (max-width: 1000px) { 
-    .logo {
+    .logo1 {
         display: none;
     }
   }

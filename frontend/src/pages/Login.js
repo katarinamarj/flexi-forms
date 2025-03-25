@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../styles/Login.css"; 
 import { useNavigate } from 'react-router-dom';
-import logo from '../images/logo.png';
+
+import Header from "../components/Header"; 
+import Footer from "../components/Footer"; 
 
 const Login = () => {
 
@@ -33,51 +35,46 @@ const Login = () => {
     }
   };
 
-  const goToRegister = () => {
-    navigate('/register');
-  };
 
   return (
-    <div className="container">
-    <img src={logo} alt="Logo" className="logo1" />
-
-      <div className="left-side">
-      <h1>Welcome to Flexi Forms</h1>
-        <center><h2>New to our platform?<br/> Creating an account is quick and easy!<br/>Join us in just a few steps.</h2></center>
-        <button className="signup-btn" onClick={goToRegister}>REGISTER</button>
-      </div>
-
-      <div className="right-side">
-        <div className="login-box">
-          <h1>Log in</h1>
-          <h5>Please enter your details</h5>
-          <form onSubmit={handleLogin}> 
-            <div className="input-group">
-            <label>username</label>
-            <input 
-                type="text" 
-                value={username} 
-                onChange={(e) => setUsername(e.target.value)} 
-                required 
-              />
-            </div>
-            <div className="input-group">
-              <label>password</label>
-              <input 
-                type="password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required 
-              />
-            </div>
-            <div className="button-container">
-                <button className="login-btn">LOG IN</button>
-                <p className={`error ${error ? "visible" : "hidden"}`}>{error}</p>
-             </div>          
-             </form>
+  <div >
+    <Header />
+  <div className="login-container">
+    <div className="login-form">
+      <h1>Welcome back</h1>
+      <h3>Please enter your details</h3>
+      <form onSubmit={handleLogin}>
+        <div className="input-group">
+          <label>username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </div>
-      </div>
+        <div className="input-group">
+          <label>password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="button-container">
+          <p>
+            <a href="/register" className="register-link">Register if you don't have an account</a>
+          </p>
+          <button className="login-btn">LOG IN</button>
+          <p className={`error ${error ? "visible" : "hidden"}`}>{error}</p>
+        </div>
+      </form>
     </div>
+  </div>
+
+  <Footer />
+</div>
   );
 };
 

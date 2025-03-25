@@ -1,162 +1,92 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    /*overflow: hidden;*/
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #2c3424;
-    height: 100vh;
-  
-  }
-      
-  .left-side, .right-side {
-    flex: 1; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #DADED8;
-  
-  }
-  
-  .left-side {
-    background: #2c3424;
-    align-items: center;
-    padding: 20px;
-    height: auto;
-    transform: translateY(-40px);
-  }
-  
-  .left-side h1 {
-    font-size: 50px;
-    max-width: 80%;
-    text-align: center;
-  }
-  
-  .left-side h2 {
-    margin-top: auto; 
-    text-align: center;
-  }
-  
-  .signup-btn {
-    background: transparent;
-    border: 2px solid#DADED8;
-    color: #DADED8;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 50px;
-    padding: 12px 20px;
-    font-size: 15px;
-  }
-    
-  .signup-btn:hover {
-    background: #DADED8;
-    color: #2c3424;
-  }
-    
-  .right-side {
-    background: #4c583e;
-    padding: 40px;
-    height: 100%; 
-  }
-  
-  .right-side h1{
-    transform: translateY(-80px);
-    font-size: 50px;
-  }
-   
-  .right-side h5{
-    transform: translateY(-100px);
-    margin-bottom: 50px;
-  }
-    
-  .login-box {
-    width: 70%;
-  }
-    
-  .input-group {
-    margin-bottom: 25px;
-    transform: translateY(-100px);
-  }
-    
-  .input-group label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-    
-  .input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #DADED8;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #DADED8;
-    margin-bottom: 15px;
-  }
-  
-  .login-btn {
-    background: transparent;
-    border: 2px solid#DADED8;
-    color: #DADED8;
-    border-radius: 20px;
-    cursor: pointer;
-    padding: 12px 20px;
-    font-size: 15px;
-    transform: translateY(-97px);
-  }
-    
-  .login-btn:hover {
-    background: #DADED8;
-    color: #2c3424;
-  }
-     
-  .logo1 {
-    position: absolute;
-    top: 20px;  
-    left: 20px; 
-    width: 5%;
-    height: 10%;
-  }
-  
-  @media (max-width: 950px) { 
-    .logo1 {
-        display: none;
-    }
-  }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D9DDE5;
+  padding: 0.625rem; 
+  color: #373F4E;  
+}
 
-  @media (max-width: 1000px) { 
-    .logo1 {
-        display: none;
-    }
-  }
-  
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 50px; 
-    position: relative; 
-    margin-top: 25px;
-  }
-  
-  .error {
-    font-size: 14px;
-    margin-top: 5px;
-    font-weight: bold;
-    opacity: 0;
-    position: absolute;
-  }
-  
-  .error.visible {
-    opacity: 1;
-  }
-  
-  .error.hidden {
-    opacity: 0;
-  }
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.625rem;
+}
+
+.input-group input {
+  padding:  0.75rem; 
+  border: 1px solid #A0A5B1;
+  border-radius: 0.625rem; 
+  background-color: transparent;
+  color: #373F4E;
+  margin-bottom: 1rem; 
+  width: 25rem; 
+  box-sizing: border-box;
+  font-size: 0.9375rem; 
+}
+
+.login-btn {
+  padding: 0.625rem 1.25rem; 
+  background-color: #373F4E; 
+  color: #BFC6D4;
+  text-decoration: none;
+  border: 1px solid #373F4E;
+  border-radius: 0.3125rem;
+  font-size: 0.9375rem; 
+  transition: background 0.3s;
+  cursor: pointer;
+  margin-top: 1.25rem; 
+}
+
+.login-btn:hover {
+  background-color: #667085;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem; 
+}
+
+.error {
+  font-size: 0.875rem; 
+  margin-top: 8.75rem; 
+  opacity: 0;
+  font-weight: bold;
+  position: absolute;
+  color: #D72638;
+  margin-bottom: 7rem; 
+}
+
+.error.visible {
+  opacity: 1;
+}
+
+.error.hidden {
+  opacity: 0;
+}
+
+.login-form h1{
+  color: #667085;
+  font-size: 2.625rem; 
+  margin-top: 2rem; 
+  margin-bottom: 0.625rem; 
+  letter-spacing: 0.09375rem; /* 1.5px */
+  transform: scaleX(1.1);
+}
+
+.login-form h3{
+  color: #667085;
+  font-size: 1.25rem; 
+  margin-top: 0.3125rem; 
+  margin-bottom: 1.5625rem; 
+}
+
+.register-link {
+  color: #373F4E; 
+}
+
+.register-link:hover {
+  color: #667085;
+}

@@ -3,10 +3,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #D1D6E0;
+    background-color: #D9DDE5;
     color: #373F4E;
     position: relative;
-    border-bottom: 1px solid #373F4E;
+    border-bottom: 1px solid #667085;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
   
   
@@ -38,9 +39,9 @@
     right: 0;
     top: 100%;
     width: 200px; 
-    background-color: #D1D6E0;
+    background-color: #D9DDE5;
     color: #373F4E;
-    border: 1px solid #373F4E;
+    border: 1px solid #667085;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding: 5px;
 }
@@ -99,8 +100,22 @@
     border-radius: 5px; 
     transition: background 0.3s;
 }
+
+.home-button {
+    padding: 10px 20px;
+    background-color: #373F4E; 
+    color: #BFC6D4;
+    text-decoration: none;
+    border: 1px solid #373F4E;
+    border-radius: 5px; 
+    transition: background 0.3s; 
+}
   
 .auth-button:hover {
     background-color: #667085;
+}
+
+.home-button:hover {
+    background-color: #667085; 
 }
   

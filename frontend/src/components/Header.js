@@ -44,9 +44,9 @@ const Header = () => {
         )}
       </div>
     ) : location.pathname === "/register" ? (
-      <Link to="/login" className="auth-button">LOGIN</Link>
+      <Link to="/home" className="home-button">HOME</Link>
     ) : location.pathname === "/login" ? (
-      <Link to="/register" className="auth-button">REGISTER</Link>
+      <Link to="/home" className="home-button">HOME</Link>
     ) : location.pathname === "/" || location.pathname.startsWith("/home") ? (
       <div className="auth-buttons">
         <Link to="/login" className="auth-button">LOGIN</Link>

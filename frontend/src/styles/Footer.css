@@ -1,9 +1,10 @@
 .footer {
-    background-color: #D1D6E0;
+    background-color: #D9DDE5;
     color: #373F4E;
     text-align: center;
-    padding: 30px 10px;
-    border-top: 1px solid #373F4E;
+    padding: 1.875rem 0.625rem;
+    border-top: 0.0625rem solid #667085;
+    box-shadow: 0 -0.1875rem 0.625rem rgba(0, 0, 0, 0.15);
 }
 
 .footer-container {
@@ -12,7 +13,7 @@
     justify-content: space-between;
     align-items: flex-start;
     margin: 0 auto;
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
 }
 
 .logo-container {
@@ -24,24 +25,24 @@
 }
 
 .logoo {
-    margin-top: 30px;
-    max-width: 200px;
+    margin-top: 1.875rem;
+    max-width: 12.5rem;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .footer-section {
     flex: 1;
-    min-width: 250px;
+    min-width: 15.625rem;
     text-align: left;
-    padding: 0 20px;
+    padding: 0 1.25rem;
 }
 
 .footer-section h3, .footer-section h2 {
     font-size: 1.3rem;
-    margin-bottom: 12px;
-    border-bottom: 2px solid #373F4E;
-    padding-bottom: 5px;
+    margin-bottom: 0.75rem;
+    border-bottom: 0.125rem solid #373F4E;
+    padding-bottom: 0.3125rem;
 }
 
 .footer-section ul {
@@ -50,7 +51,7 @@
 }
 
 .footer-section ul li {
-    margin: 8px 0;
+    margin: 0.5rem 0;
     cursor: pointer;
     transition: color 0.3s ease;
 }
@@ -60,21 +61,29 @@
    color:  #373F4E;
 }
 
+.footer-section p a{
+    text-decoration: none;
+    color:  #373F4E;
+ }
+
 .footer-section ul li a:hover {
+    color: #667085;
+}
+
+.footer-section p a:hover {
     color: #667085;
 }
 
 .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 0.9375rem;
     justify-content: flex-start;
-    margin-top: 5px;
+    margin-top: 0.3125rem;
 }
 
 .social-icons a{
     color: #373F4E;
-    font-size: 25px;
-
+    font-size: 1.5625rem;
 }
 
 .social-icons a:hover{
@@ -86,3 +95,20 @@
     color: #373F4E;
     text-align: center;
 }
+
+.footer-bottom {
+    margin-top: 1.875rem;
+}
+
+.footer-line {
+    border: 0;
+    height: 0.0625rem;
+    margin-bottom: 1.25rem;
+    margin-top: 3.125rem;
+    background-color: #667085; 
+    width: 50%; 
+    margin-left: auto;
+    margin-right: auto; 
+    border-radius: 0.125rem; 
+}
+

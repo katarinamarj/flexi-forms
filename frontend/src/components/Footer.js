@@ -35,8 +35,8 @@ const Footer = () => {
 
         <div className="footer-section">
           <h3>Contact</h3>
-          <p>+381 999 999 999</p>
-          <p>support@flexiforms.com</p>
+          <p><a href="#">+381 999 999 999</a></p>
+          <p><a href="#">support@flexiforms.com</a></p>
           <div className="social-icons">
             <a href="https://github.com" ><FaGithub /></a>
             <a href="https://youtube.com"><FaYoutube /></a>
@@ -44,6 +44,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+        <hr className="footer-line" />
         <p className="footer-bottom">&copy; 2025 Flexi Forms. All rights reserved.</p>
     </footer>
   );

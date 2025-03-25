@@ -2,12 +2,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     background-color: #D9DDE5;
     color: #373F4E;
     position: relative;
     border-bottom: 1px solid #667085;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.1875rem 0.625rem rgba(0, 0, 0, 0.15);
 }
   
   
@@ -18,14 +18,14 @@
 }
   
 .logo {
-    height: 65px;
+    height: 4.0625rem;
 }
   
 .menu-button {
     margin-left: auto;
-    font-size: 30px;
+    font-size: 1.875rem;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 0.3125rem 0.625rem;
     position: relative;
 }
 
@@ -38,12 +38,12 @@
     position: absolute;
     right: 0;
     top: 100%;
-    width: 200px; 
+    width: 12.5rem; 
     background-color: #D9DDE5;
     color: #373F4E;
     border: 1px solid #667085;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 5px;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
+    padding: 0.3125rem;;
 }
 
 .dropdown-menu ul {
@@ -57,8 +57,8 @@
     border-bottom: 1px solid #BFC6D4;
     display: flex;
     align-items: center; 
-    gap: 8px; 
-    font-size: 20px;
+    gap: 0.5rem; 
+    font-size: 1.25rem; 
 }
 
 .dropdown-menu li:last-child {
@@ -70,7 +70,7 @@
     color: #373F4E;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
     width: 100%; 
 }
 
@@ -83,16 +83,16 @@
 }
 
 .dropdown-menu li svg {
-    font-size: 20px; 
+    font-size: 1.25rem;
 }
   
 .auth-buttons {
     display: flex;
-    gap: 10px; 
+    gap: 0.625rem;
 }
   
 .auth-button {
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     background-color: #373F4E; 
     color: #BFC6D4;
     text-decoration: none;
@@ -102,7 +102,7 @@
 }
 
 .home-button {
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     background-color: #373F4E; 
     color: #BFC6D4;
     text-decoration: none;

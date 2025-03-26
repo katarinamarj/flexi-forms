@@ -45,12 +45,16 @@ final class AuthController extends AbstractController
             return new JsonResponse(['message' => 'All data must be entered.'], 400);
         }
 
-        $existingUser = $this->userRepository->findOneBy(['username' => $data['username']]) ?? $this->userRepository->findOneBy(['email' => $data['email']]);
-
-        if ($existingUser) {
-            return new JsonResponse(['message' => 'A user with that username or email address already exists.'], 409);
+        $existingUserByUsername = $this->userRepository->findOneBy(['username' => $data['username']]);
+        $existingUserByEmail = $this->userRepository->findOneBy(['email' => $data['email']]);
+        
+        if ($existingUserByUsername) {
+            return new JsonResponse(['message' => 'A user with that username already exists.'], 409);
         }
-
+        
+        if ($existingUserByEmail) {
+            return new JsonResponse(['message' => 'A user with that email address already exists.'], 409);
+        }        
 
         $user = new User();
         $user->setFullName($data['fullName']);
@@ -61,7 +65,9 @@ final class AuthController extends AbstractController
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        return new JsonResponse(['message' => 'Successful registration'], 201);
+        $token = $this->jwtManager->create($user);
+
+        return new JsonResponse(['message' => 'Successful registration','token' => $token], 201);
     }
 
     #[Route('/login', name: 'app_login', methods: ['POST'])]
@@ -76,7 +82,7 @@ final class AuthController extends AbstractController
     $user = $userRepository->findOneBy(['username' => $data['username']]);
 
     if (!$user || !$passwordHasher->isPasswordValid($user, $data['password'])) {
-        return new JsonResponse(['message' => 'Invalid username or password'], 401);
+        return new JsonResponse(['message' => 'Invalid username or password.'], 401);
     }
 
     $token = $this->jwtManager->create($user);

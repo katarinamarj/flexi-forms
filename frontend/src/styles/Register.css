@@ -1,3 +1,67 @@
-body{
-    background-color: #959581;
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D9DDE5;
+  padding: 0.5rem; 
+  color: #373F4E;  
+}
+
+.reg-btn {
+  padding: 0.625rem 1.25rem; 
+  background-color: #373F4E; 
+  color: #BFC6D4;
+  text-decoration: none;
+  border: 1px solid #373F4E;
+  border-radius: 0.3125rem;
+  font-size: 0.9375rem; 
+  transition: background 0.3s;
+  cursor: pointer;
+  margin-top: 1rem; 
+  margin-bottom: 0;
+}
+
+.reg-btn:hover {
+  background-color: #667085;
+}
+
+.login-link {
+  color: #373F4E; 
+}
+  
+.login-link:hover {
+  color: #667085;
+}
+
+.reg-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem; 
+}
+
+.register-form h1{
+  color: #667085;
+  font-size: 2.625rem; 
+  margin-top: 0.8rem; 
+  margin-bottom: 1.5rem; 
+  letter-spacing: 0.09375rem; 
+  transform: scaleX(1.1);
+}
+
+.errorMessage {
+  font-size: 0.875rem; 
+  opacity: 0;
+  font-weight: bold;
+  position: absolute;
+  color: #D72638;
+  margin-top: 7.7rem;
+}
+  
+.errorMessage.visible {
+  opacity: 1;
+}
+  
+.errorMessage.hidden {
+  opacity: 0;
 }

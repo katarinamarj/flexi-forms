@@ -30,7 +30,7 @@ const Home = () => {
   };
 
   return (
-    <div class="home-page">
+    <div className="home-page">
       <Header />
 
       <div className="home-image-container">
@@ -54,25 +54,27 @@ const Home = () => {
           <h3>Fully Customizable</h3>
           <hr />
           <p>
-            Our platform allows you to create forms tailored to your specific needs. 
-            Choose from a variety of field types. 
-            We provide you with a tool for easy and fast data collection.
+          Our platform allows you to create forms that are fully tailored to your specific needs. 
+          You can choose from a variety of field types to shape the form according to your requirements.
+          Whether it's a simple survey or a more complex form, our tool provides an intuitive and efficient solution for quickly collecting and analyzing data.
           </p>
         </div>
         <div className="feature-box">
           <h3>Share via Link</h3>
           <hr />
           <p>
-            Easily share your forms with a unique link that can be shared with anyone — team members, clients, or users. 
-            With just one click, recipients can access and fill out the form, making collaboration and data collection faster and more efficient.
+          Easily share your forms through a unique link that can be sent to anyone—team members, clients, or users. 
+          With just one click, recipients can access and complete the form without needing to sign in. 
+          This functionality simplifies collaboration and ensures efficient data collection, speeding up the process of analysis and decision-making.
           </p>
         </div>
         <div className="feature-box">
-          <h3>View and Analyze Responses</h3>
+          <h3>View Responses</h3>
           <hr />
           <p>
-            All answers are available to you at any time, allowing you to analyze data and generate reports effortlessly. 
-            Make informed decisions based on the feedback and answers collected.
+          All responses are available to you in real time, allowing for detailed analysis of the collected data. 
+          Our platform helps you quickly generate reports and make informed decisions based on user feedback. 
+          No matter the volume of data, you can easily filter, group, and utilize it to improve your services or products.
           </p>
         </div>
       </div>

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-#[Route('/form-templates', name: 'api_forms_')]
+#[Route('/api/form-templates', name: 'api_forms_')]
 class FormTemplateController extends AbstractController
 {
     #[Route('', methods: ['POST'])]
@@ -22,6 +22,8 @@ class FormTemplateController extends AbstractController
         $formTemplate = new FormTemplate();
         $formTemplate->setName($data['name'] ?? '');
         $formTemplate->setDescription($data['description'] ?? null);
+
+        $formTemplate->setUser($this->getUser());
 
         $errors = $validator->validate($formTemplate);
         if (count($errors) > 0) {
@@ -37,8 +39,22 @@ class FormTemplateController extends AbstractController
     #[Route('', methods: ['GET'])]
     public function getAll(FormTemplateRepository $repository): JsonResponse
     {
-        $forms = $repository->findAll();
-        return $this->json($forms);
+        $forms = $repository->findBy(['user' => $this->getUser()]);
+
+        $data = array_map(function (FormTemplate $form) {
+            return [
+                'id' => $form->getId(),
+                'name' => $form->getName(),
+                'description' => $form->getDescription(),
+                'user' => [
+                    'id' => $form->getUser()->getId(),
+                    'username' => $form->getUser()->getUsername(),
+                    'fullName' => $form->getUser()->getFullName(),
+                ],
+            ];
+        }, $forms);
+
+        return $this->json($data);
     }
 
     #[Route('/{id}', methods: ['GET'])]
@@ -48,7 +64,23 @@ class FormTemplateController extends AbstractController
         if (!$form) {
             return $this->json(['error' => 'Form Template not found'], 404);
         }
-        return $this->json($form);
+
+        if ($form->getUser() !== $this->getUser()) {
+            return $this->json(['error' => 'Unauthorized'], 403);
+        } 
+
+        $data = [
+            'id' => $form->getId(),
+            'name' => $form->getName(),
+            'description' => $form->getDescription(),
+            'user' => [
+                'id' => $form->getUser()->getId(),
+                'username' => $form->getUser()->getUsername(),
+                'fullName' => $form->getUser()->getFullName(),
+            ],
+        ];
+    
+        return $this->json($data);
     }
 
     #[Route('/{id}', methods: ['PUT'])]
@@ -58,6 +90,10 @@ class FormTemplateController extends AbstractController
         if (!$form) {
             return $this->json(['error' => 'Form Template not found'], 404);
         }
+
+        if ($form->getUser() !== $this->getUser()) {
+            return $this->json(['error' => 'Unauthorized'], 403);
+        }        
 
         $data = json_decode($request->getContent(), true);
         $form->setName($data['name'] ?? $form->getName());
@@ -80,6 +116,10 @@ class FormTemplateController extends AbstractController
         if (!$form) {
             return $this->json(['error' => 'Form Tempate not found'], 404);
         }
+
+        if ($form->getUser() !== $this->getUser()) {
+            return $this->json(['error' => 'Unauthorized'], 403);
+        } 
 
         $em->remove($form);
         $em->flush();

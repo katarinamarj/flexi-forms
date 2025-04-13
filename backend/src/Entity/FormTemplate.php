@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\FormTemplateRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\User;
 
 #[ORM\Entity(repositoryClass: FormTemplateRepository::class)]
 class FormTemplate
@@ -18,9 +19,12 @@ class FormTemplate
     #[Assert\NotBlank(message: "Name can't be empty.")]
     private ?string $name = null;
 
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
+
+    #[ORM\ManyToOne(inversedBy: 'formTemplates')]
+    #[ORM\JoinColumn(nullable: false)] 
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -49,5 +53,17 @@ class FormTemplate
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+       $this->user = $user;
+
+       return $this;
     }
 }

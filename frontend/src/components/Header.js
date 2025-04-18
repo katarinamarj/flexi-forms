@@ -8,6 +8,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { IoDocumentText } from "react-icons/io5";
 import { IoMenu } from "react-icons/io5";
 
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();  
@@ -26,7 +27,7 @@ const Header = () => {
       <img src={logo} alt="Logo" className="logo" />
     </div>
 
-    {location.pathname === "/dashboard" ? (
+    {location.pathname === "/dashboard" || location.pathname === "/templates" ? (
       <div
         className="menu-button"
         onMouseEnter={() => setMenuOpen(true)}
@@ -36,8 +37,16 @@ const Header = () => {
         {menuOpen && (
           <div className="dropdown-menu">
             <ul>
-              <li><a href="#"><IoDocumentText /> My templates</a></li>
-              <li><a href="/register"><CgProfile /> My Profile</a></li>
+            {location.pathname === '/dashboard' ? (
+              <li>
+                <Link to="/templates"><IoDocumentText /> My templates</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/dashboard"><IoDocumentText /> Create template</Link>
+              </li>
+            )}              
+            <li><a href="/register"><CgProfile /> My Profile</a></li>
               <li><a href="#" onClick={handleLogout}><IoMdLogOut /> Log out</a></li>
             </ul>
           </div>

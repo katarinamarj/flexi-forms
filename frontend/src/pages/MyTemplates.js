@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/MyTemplates.css";
 import Header from "../components/Header"; 
 import Footer from "../components/Footer"; 
 
 const Templates = () => {
 
+  const navigate = useNavigate();
+  
   const [templates, setTemplates] = useState([]);
   const [loading, setLoading] = useState(true);
     
@@ -87,8 +90,8 @@ const Templates = () => {
                   <td>{template.name}</td>
                   <td>{template.description || "—"}</td>
                   <td>
-                    <button className="action-button">Edit</button>
-                    <button className="action-button" onClick={() => handleDelete(template.id)}>Delete</button>
+                  <button className="action-button" onClick={() => navigate(`/edit/${template.id}`)}>Edit</button>
+                  <button className="action-button" onClick={() => handleDelete(template.id)}>Delete</button>
                     <button className="action-button">Preview</button>
                   </td>
                 </tr>

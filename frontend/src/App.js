@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Templates from "./pages/MyTemplates";
 import Profile from "./pages/MyProfile";
+import EditTemplate from "./pages/EditTemplate";
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -23,6 +24,7 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/templates" element={<PrivateRoute><Templates/></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>} />
+        <Route path="/edit/:id" element={<PrivateRoute><EditTemplate /></PrivateRoute>} />
       </Routes>
     </Router>
   );

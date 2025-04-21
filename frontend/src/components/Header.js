@@ -19,13 +19,19 @@ const Header = () => {
     navigate('/home');
   };
 
+  const isDashboardRoute =
+    location.pathname === "/dashboard" ||
+    location.pathname === "/templates" ||
+    location.pathname === "/profile" ||
+    location.pathname.startsWith("/edit");
+
   return (
     <header className="header">
     <div className="logo-container">
       <img src={logo} alt="Logo" className="logo" />
     </div>
 
-    {location.pathname === "/dashboard" || location.pathname === "/templates" || location.pathname === "/profile" ? (
+    {isDashboardRoute ? (
       <div
       className="menu-button"
       onMouseEnter={() => setMenuOpen(true)}
@@ -35,37 +41,22 @@ const Header = () => {
       {menuOpen && (
         <div className="dropdown-menu">
           <ul>
-            {location.pathname === '/dashboard' && (
-              <>
-                <li>
-                  <Link to="/templates"><IoDocumentText /> My templates</Link>
-                </li>
-                <li>
-                  <Link to="/profile"><CgProfile /> My Profile</Link>
-                </li>
-              </>
+            {location.pathname !== '/dashboard' && (
+              <li>
+                <Link to="/dashboard"><IoCreate /> Create template</Link>
+              </li>
             )}
   
-            {location.pathname === '/templates' && (
-              <>
-                <li>
-                  <Link to="/dashboard"><IoCreate /> Create template</Link>
-                </li>
-                <li>
-                  <Link to="/profile"><CgProfile /> My Profile</Link>
-                </li>
-              </>
+            {location.pathname !== '/templates' && (
+              <li>
+                <Link to="/templates"><IoDocumentText /> My templates</Link>
+              </li>
             )}
   
-            {location.pathname === '/profile' && (
-              <>
-                <li>
-                  <Link to="/dashboard"><IoCreate /> Create template</Link>
-                </li>
-                <li>
-                  <Link to="/templates"><IoDocumentText /> My templates</Link>
-                </li>
-              </>
+            {location.pathname !== '/profile' && (
+              <li>
+                <Link to="/profile"><CgProfile /> My Profile</Link>
+              </li>
             )}
   
             <li>

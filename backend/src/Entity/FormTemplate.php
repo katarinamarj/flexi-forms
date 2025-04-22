@@ -26,6 +26,9 @@ class FormTemplate
     #[ORM\JoinColumn(nullable: false)] 
     private ?User $user = null;
 
+    #[ORM\OneToMany(mappedBy: 'formTemplate', targetEntity: FormField::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    private Collection $fields;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,4 +69,10 @@ class FormTemplate
 
        return $this;
     }
+
+    public function __construct()
+    {
+       $this->fields = new ArrayCollection();
+    }
+
 }

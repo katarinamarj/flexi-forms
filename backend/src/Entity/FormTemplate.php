@@ -6,6 +6,8 @@ use App\Repository\FormTemplateRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: FormTemplateRepository::class)]
 class FormTemplate
@@ -75,4 +77,8 @@ class FormTemplate
        $this->fields = new ArrayCollection();
     }
 
+    public function getFields(): Collection
+    {
+       return $this->fields;
+    }
 }

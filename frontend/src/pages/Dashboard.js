@@ -4,9 +4,30 @@ import Header from "../components/Header";
 import Footer from "../components/Footer"; 
 
 const Dashboard = () => {
+  const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [label, setLabel] = useState("");
+  const [type, setType] = useState("text");
+  const [options, setOptions] = useState("");
+  const [isRequired, setIsRequired] = useState(false);
+  const [fields, setFields] = useState([]);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState('');
+
+  const handleAddField = () => {
+    const newField = {
+      label,
+      type,
+      isRequired,
+      options: ["checkbox", "radio", "dropdown"].includes(type) ? options.split(",") : null,
+    };
+    setFields([...fields, newField]);
+    setLabel("");
+    setType("text");
+    setOptions("");
+    setIsRequired(false);
+  };
 
   const handleCreate = async () => {
     try {
@@ -16,7 +37,7 @@ const Dashboard = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify({ name, description }),
+        body: JSON.stringify({ name, description, fields }),
       });
 
       const data = await response.json();
@@ -24,6 +45,8 @@ const Dashboard = () => {
         setMessage("Form created successfully!");
         setName("");
         setDescription("");
+        setFields([]);
+        setStep(1);
       } else {
         setMessage(data.error || "Failed to create form");
       }
@@ -37,22 +60,126 @@ const Dashboard = () => {
     <div>
       <Header />
       <div className="dashboard-container">
-        <h2>Create Form Template</h2>
+
+        <div className="wizard-steps">
+          <div className={`step ${step === 1 ? "active" : ""}`}>1. Info</div>
+          <div className={`step ${step === 2 ? "active" : ""}`}>2. Fields</div>
+          <div className={`step ${step === 3 ? "active" : ""}`}>3. Review</div>
+        </div>
+
+        {step === 1 && (
         <div className="form-container">
+          <div className="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label>Description</label>
+            <textarea
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <button onClick={() => {
+              if (!name.trim()) {
+                setError('Name is required');
+              } else {
+                setError('');
+                setStep(2);
+              }
+            }} className="button1">Next</button>
+         
+            <div className="error-container">
+              {error && <p className="error-message">Name is required.</p>}
+            </div>
+          </div>
+        </div>
+        )}
+
+        {step === 2 && (
+        <div className="form-container">
+          <label>Label</label>
           <input
             type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={label}
+            onChange={(e) => setLabel(e.target.value)}
           />
-          <textarea
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+          <label>Type</label>
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            <option value="text">Text</option>
+            <option value="textarea">Textarea</option>
+            <option value="number">Number</option>
+            <option value="checkbox">Checkbox</option>
+            <option value="radio">Radio</option>
+            <option value="dropdown">Dropdown</option>
+            <option value="date">Date</option>
+            <option value="time">Time</option>
+            <option value="email">Email</option>
+            <option value="password">Password</option>
+            <option value="url">URL</option>
+            <option value="phone">Phone</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Options (comma separated)"
+            value={options}
+            onChange={(e) => setOptions(e.target.value)}
+            disabled={!["checkbox", "radio", "dropdown"].includes(type)}
           />
-          <button onClick={handleCreate}>Create</button>
-          {message && <p>{message}</p>}
-        </div>
+          <label>
+            <input
+              type="checkbox"
+              checked={isRequired}
+              onChange={(e) => setIsRequired(e.target.checked)}
+            />
+            Required
+          </label>
+          <button onClick={handleAddField}>Add Field</button>
+          <button onClick={() => setStep(1)}>Back</button>
+          <button onClick={() => setStep(3)} disabled={fields.length === 0}>Next</button>
+          {fields.length > 0 && (
+            <table className="fields-table">
+              <thead>
+                <tr>
+                  <th>Label</th>
+                  <th>Type</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                {fields.map((field, index) => (
+                  <tr key={index}>
+                    <td>{field.label}</td>
+                    <td>{field.type}</td>
+                    <td>{field.options ? field.options.join(", ") : "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+          
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="form-container">
+            <p><strong>Name:</strong> {name}</p>
+            <p><strong>Description:</strong> {description}</p>
+            <h4>Fields:</h4>
+            <ul>
+              {fields.map((field, index) => (
+                <li key={index}>
+                  {field.label} ({field.type}) {field.isRequired ? "[required]" : ""} {field.options ? `Options: ${field.options.join(", ")}` : ""}
+                </li>
+              ))}
+            </ul>
+            <button onClick={() => setStep(2)}>Back</button>
+            <button onClick={handleCreate}>Create</button>
+            {message && <p>{message}</p>}
+          </div>
+        )}
       </div>
       <Footer />
     </div>

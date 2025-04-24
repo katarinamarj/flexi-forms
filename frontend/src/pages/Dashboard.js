@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer"; 
 import FormStepInfo from "../components/FormStepInfo";
 import FormStepFields from "../components/FormStepFields";
-
+import FormStepReview from "../components/FormStepReview";
 
 const Dashboard = () => {
   const [step, setStep] = useState(1);
@@ -86,22 +86,15 @@ const Dashboard = () => {
         )}
 
         {step === 3 && (
-          <div className="form-container">
-            <p><strong>Name:</strong> {name}</p>
-            <p><strong>Description:</strong> {description}</p>
-            <h4>Fields:</h4>
-            <ul>
-              {fields.map((field, index) => (
-                <li key={index}>
-                  {field.label} ({field.type}) {field.isRequired ? "[required]" : ""} {field.options ? `Options: ${field.options.join(", ")}` : ""}
-                </li>
-              ))}
-            </ul>
-            <button onClick={() => setStep(2)}>Back</button>
-            <button onClick={handleCreate}>Create</button>
-            {message && <p>{message}</p>}
-          </div>
-        )}
+          <FormStepReview
+            name={name}
+            description={description}
+            fields={fields}
+            setStep={setStep}
+            handleCreate={handleCreate}
+            message={message}
+          />
+        )}      
       </div>
       <Footer />
     </div>

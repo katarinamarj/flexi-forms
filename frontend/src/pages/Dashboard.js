@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../styles/Dashboard.css";
 import Header from "../components/Header"; 
 import Footer from "../components/Footer"; 
+import FormStepInfo from "../components/FormStepInfo";
 
 const Dashboard = () => {
   const [step, setStep] = useState(1);
@@ -68,34 +69,15 @@ const Dashboard = () => {
         </div>
 
         {step === 1 && (
-        <div className="form-container">
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label>Description</label>
-            <textarea
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <button onClick={() => {
-              if (!name.trim()) {
-                setError('Name is required');
-              } else {
-                setError('');
-                setStep(2);
-              }
-            }} className="button1">Next</button>
-         
-            <div className="error-container">
-              {error && <p className="error-message">Name is required.</p>}
-            </div>
-          </div>
-        </div>
+          <FormStepInfo
+            name={name}
+            setName={setName}
+            description={description}
+            setDescription={setDescription}
+            error={error}
+            setError={setError}
+            setStep={setStep}
+          />
         )}
 
         {step === 2 && (
@@ -107,20 +89,19 @@ const Dashboard = () => {
             onChange={(e) => setLabel(e.target.value)}
           />
           <label>Type</label>
-          <select value={type} onChange={(e) => setType(e.target.value)}>
-            <option value="text">Text</option>
-            <option value="textarea">Textarea</option>
-            <option value="number">Number</option>
-            <option value="checkbox">Checkbox</option>
-            <option value="radio">Radio</option>
-            <option value="dropdown">Dropdown</option>
-            <option value="date">Date</option>
-            <option value="time">Time</option>
-            <option value="email">Email</option>
-            <option value="password">Password</option>
-            <option value="url">URL</option>
-            <option value="phone">Phone</option>
-          </select>
+          <div className="button-group-grid">
+             {["text", "textarea", "number", "checkbox", "radio", "dropdown", "date", "time", "email", "password", "url", "phone"].map((t) => (
+            <button
+              key={t}
+              type="button"
+              className={type === t ? "type-button selected" : "type-button"}
+              onClick={() => setType(t)}
+            >
+            {t.charAt(0).toUpperCase() + t.slice(1)}
+            </button>
+              ))}
+          </div>
+          <label>Options</label>
           <input
             type="text"
             placeholder="Options (comma separated)"
@@ -136,7 +117,7 @@ const Dashboard = () => {
             />
             Required
           </label>
-          <button onClick={handleAddField}>Add Field</button>
+          <button onClick={handleAddField} className="left">Add Field</button>
           <button onClick={() => setStep(1)}>Back</button>
           <button onClick={() => setStep(3)} disabled={fields.length === 0}>Next</button>
           {fields.length > 0 && (

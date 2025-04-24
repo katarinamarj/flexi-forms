@@ -1,0 +1,24 @@
+.button-group-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #D9DDE5;
+}
+  
+.type-button {
+    padding: 8px;
+    border: 1px solid #667085;
+    background-color: #D9DDE5;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+  
+.type-button.selected {
+    background-color: #373F4E;
+    color: #D9DDE5;
+    border-color: #373F4E;
+}
+  
+ 

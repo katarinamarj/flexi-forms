@@ -23,8 +23,9 @@ const FormStepInfo = ({ name, setName, description, setDescription, error, setEr
               setStep(2);
             }
           }} className="button1">Next</button>
-  
-          {error && <p className="error-message">Name is required.</p>}
+          <div className="error-container">
+            {error && <p className="error-message">Name is required.</p>}
+          </div>
         </div>
       </div>
     );

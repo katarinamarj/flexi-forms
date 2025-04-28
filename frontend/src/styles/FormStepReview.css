@@ -1,0 +1,58 @@
+.form-container p,
+.form-container h4 {
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.fields-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+  
+.fields-table th,
+.fields-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+  
+.fields-table th {
+  background-color: #BFC6D4;
+}
+  
+.action-button {
+  padding: 4px 8px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  
+.action-button.delete {
+  background-color: #373F4E;
+  color: #BFC6D4;
+}
+  
+.action-button.delete:hover{
+  background-color:  #667085;
+}
+
+.create-button {
+  padding: 0.625rem 1.25rem;
+  background-color: #373F4E; 
+  color: #BFC6D4;
+  text-decoration: none;
+  border: 1px solid #373F4E;
+  border-radius: 5px; 
+  transition: background 0.3s; 
+  width: 90px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 1.3rem;
+  font-weight: bold;
+}
+
+.create-button:hover {
+  background-color: #667085;
+}

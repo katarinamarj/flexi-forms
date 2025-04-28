@@ -1,99 +1,98 @@
 .fields-container {
-    position: relative;
-    background-color: #D9DDE5;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    width: 700px;
-    margin: 0;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-weight: bold;
+  position: relative;
+  background-color: #D9DDE5;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 700px;
+  margin: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: bold;
 }
 
 .fields-container input,
 .fields-container textarea {
-    padding: 0.75rem;
-    border: 1px solid #A0A5B1;
-    border-radius: 0.625rem;
-    background-color: transparent;
-    color: #373F4E;
-    margin-bottom: 0.9rem; /* smanjen razmak */
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 0.9375rem;
-    resize: none;
-    font-family: sans-serif;
-  }
-
-  .fields-container textarea {
-    resize: none;
-    height: 80px;
-  }
-.fields-container label{
-    margin: 0;
+  padding: 0.75rem;
+  border: 1px solid #A0A5B1;
+  border-radius: 0.625rem;
+  background-color: transparent;
+  color: #373F4E;
+  margin-bottom: 0.9rem; 
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.9375rem;
+  resize: none;
+  font-family: sans-serif;
 }
 
+.fields-container textarea {
+  resize: none;
+  height: 80px;
+}
 
+.fields-container label{
+  margin: 0;
+}
 
 .button-group-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); 
-    gap: 10px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 10px;
+  margin-bottom: 20px;
 }
   
 .type-button {
-    padding: 8px;
-    color: #373F4E;
-    font-weight: bold;
-    border: 1px solid #667085;
-    background-color: #D9DDE5;
-    cursor: pointer;
-    border-radius: 4px;
-    text-transform: capitalize;
+  padding: 8px;
+  color: #373F4E;
+  font-weight: bold;
+  border: 1px solid #667085;
+  background-color: #D9DDE5;
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: capitalize;
 }
   
 .type-button.selected {
-    background-color: #667085;
-    color: #BFC6D4;
-    border-color: #667085;
+  background-color: #667085;
+  color: #BFC6D4;
+  border-color: #667085;
 }
 
 .checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 0.1rem; /* razmak između checkbox-a i teksta */
-    font-weight: bold;
-  }
+  display: flex;
+  align-items: center;
+  gap: 0.1rem; 
+  font-weight: bold;
+}
 
-  .button-row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
   
-  .button-row button {
-    padding: 0.75rem 1.5rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    background-color: #373F4E;
-    color: #BFC6D4;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 20px;
-  }
+.button-row button {
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background-color: #373F4E;
+  color: #BFC6D4;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
   
-  .button-row button:disabled {
-    background-color: #A0A5B1;
-    cursor: not-allowed;
-  }
+.button-row button:disabled {
+  background-color: #A0A5B1;
+  cursor: not-allowed;
+}
 
-  .button-row button:hover {
-    background-color: #667085;
+.button-row button:hover {
+  background-color: #667085;
 }
 
 .select-row {
@@ -105,7 +104,7 @@
 }
 
 .select-row label {
-  min-width: 100px; /* fiksna širina za bolju poravnatost */
+  min-width: 100px; 
 }
 
 .styled-select {
@@ -118,12 +117,14 @@
   font-family: sans-serif;
   width: 90px;
 }
+
 .styled-select option {
   background-color: #D9DDE5;
   color: #373F4E;
   padding: 0.5rem;
   font-family: sans-serif;
 }
+
 .styled-select option:hover {
   background-color: #667085;
   color: #fff;

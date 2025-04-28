@@ -46,6 +46,10 @@ const Dashboard = () => {
     }
   };
 
+  const handleDeleteField = (indexToDelete) => {
+    setFields(prevFields => prevFields.filter((_, index) => index !== indexToDelete));
+  };
+
   return (
     <div>
       <Header />
@@ -93,6 +97,7 @@ const Dashboard = () => {
             setStep={setStep}
             handleCreate={handleCreate}
             message={message}
+            handleDeleteField={handleDeleteField}
           />
         )}      
       </div>

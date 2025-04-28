@@ -55,11 +55,27 @@ const Dashboard = () => {
       <Header />
       <div className="dashboard-container">
 
-        <div className="wizard-steps">
-          <div className={`step ${step === 1 ? "active" : ""}`}>1. Info</div>
-          <div className={`step ${step === 2 ? "active" : ""}`}>2. Fields</div>
-          <div className={`step ${step === 3 ? "active" : ""}`}>3. Review</div>
-        </div>
+      <div className="wizard-steps">
+  <button
+    className={`step ${step === 1 ? "active" : ""}`}
+    onClick={() => setStep(1)}
+  >
+    1. Info
+  </button>
+  <button
+    className={`step ${step === 2 ? "active" : ""}`}
+    onClick={() => setStep(2)}
+  >
+    2. Fields
+  </button>
+  <button
+    className={`step ${step === 3 ? "active" : ""}`}
+    onClick={() => setStep(3)}
+  >
+    3. Review
+  </button>
+</div>
+
 
         {step === 1 && (
           <FormStepInfo

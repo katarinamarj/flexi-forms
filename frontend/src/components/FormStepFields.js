@@ -16,7 +16,7 @@ const FormStepFields = ({ label, setLabel, type, setType, options, setOptions, i
     };
   
     return (
-      <div className="form-container">
+      <div className="fields-container">
         <label>Label</label>
         <input type="text" value={label} onChange={(e) => setLabel(e.target.value)} />
         <label>Type</label>
@@ -32,46 +32,34 @@ const FormStepFields = ({ label, setLabel, type, setType, options, setOptions, i
             </button>
           ))}
         </div>
-        <label>Options</label>
-        <input
+        {["checkbox", "radio", "dropdown"].includes(type) && (
+        <>
+         <label>Enter options separated by commas</label>
+         <textarea
           type="text"
-          placeholder="Options (comma separated)"
+          placeholder="option, option, option..."
           value={options}
           onChange={(e) => setOptions(e.target.value)}
-          disabled={!["checkbox", "radio", "dropdown"].includes(type)}
-        />
-        <label>
-          <input
-            type="checkbox"
-            checked={isRequired}
-            onChange={(e) => setIsRequired(e.target.checked)}
-          />
-          Required
-        </label>
-        <button onClick={handleAddField} className="left">Add Field</button>
-        <button onClick={() => setStep(1)}>Back</button>
-        <button onClick={() => setStep(3)} disabled={fields.length === 0}>Next</button>
-  
-        {fields.length > 0 && (
-          <table className="fields-table">
-            <thead>
-              <tr>
-                <th>Label</th>
-                <th>Type</th>
-                <th>Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              {fields.map((field, index) => (
-                <tr key={index}>
-                  <td>{field.label}</td>
-                  <td>{field.type}</td>
-                  <td>{field.options ? field.options.join(", ") : "—"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+         />
+        </>
+         )}
+        <div className="select-row">
+          <label htmlFor="required">Required</label>
+          <select
+            id="required"
+            className="styled-select"
+            value={isRequired ? "yes" : "no"}
+            onChange={(e) => setIsRequired(e.target.value === "yes")}
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div className="button-row">
+          <button onClick={() => setStep(1)}>Back</button>
+          <button onClick={handleAddField}>Add Field</button>
+          <button onClick={() => setStep(3)} disabled={fields.length === 0}>Next</button>
+        </div>
       </div>
     );
   };

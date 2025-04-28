@@ -1,6 +1,6 @@
 import "../styles/FormStepInfo.css";
 
-const FormStepInfo = ({ name, setName, description, setDescription, error, setError, setStep }) => {
+const FormStepInfo = ({ name, setName, description, setDescription, error }) => {
     return (
       <div className="form-container">
         <div className="form-group">
@@ -15,14 +15,6 @@ const FormStepInfo = ({ name, setName, description, setDescription, error, setEr
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button onClick={() => {
-            if (!name.trim()) {
-              setError('Name is required');
-            } else {
-              setError('');
-              setStep(2);
-            }
-          }} className="button1">Next</button>
           <div className="error-container">
             {error && <p className="error-message">Name is required.</p>}
           </div>
@@ -31,5 +23,5 @@ const FormStepInfo = ({ name, setName, description, setDescription, error, setEr
     );
   };
   
-  export default FormStepInfo;
+export default FormStepInfo;
   

@@ -50,31 +50,47 @@ const Dashboard = () => {
     setFields(prevFields => prevFields.filter((_, index) => index !== indexToDelete));
   };
 
+  const handleStepChange = (newStep) => {
+    if (newStep === 2 && name.trim() === "") {
+      setError("Name is required.");
+      return; 
+    }
+
+    if (newStep === 3 && fields.length === 0) {
+      setError("You must add at least one field before reviewing.");
+      return;
+    }
+
+    setError(""); 
+    setStep(newStep);
+  };
+  
+
   return (
     <div>
       <Header />
       <div className="dashboard-container">
 
       <div className="wizard-steps">
-  <button
-    className={`step ${step === 1 ? "active" : ""}`}
-    onClick={() => setStep(1)}
-  >
-    1. Info
-  </button>
-  <button
-    className={`step ${step === 2 ? "active" : ""}`}
-    onClick={() => setStep(2)}
-  >
-    2. Fields
-  </button>
-  <button
-    className={`step ${step === 3 ? "active" : ""}`}
-    onClick={() => setStep(3)}
-  >
-    3. Review
-  </button>
-</div>
+        <button
+          className={`step ${step === 1 ? "active" : ""}`}
+          onClick={() => handleStepChange(1)}
+        >
+        1. Info
+        </button>
+        <button
+          className={`step ${step === 2 ? "active" : ""}`}
+          onClick={() => handleStepChange(2)}
+        >
+        2. Fields
+        </button>
+        <button
+          className={`step ${step === 3 ? "active" : ""}`}
+          onClick={() => handleStepChange(3)}
+        >
+        3. Review and Create
+        </button>
+      </div>
 
 
         {step === 1 && (
@@ -102,6 +118,7 @@ const Dashboard = () => {
             fields={fields}
             setFields={setFields}
             setStep={setStep}
+            error={error}
           />
         )}
 

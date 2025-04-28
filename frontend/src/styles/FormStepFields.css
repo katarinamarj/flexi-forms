@@ -70,8 +70,7 @@
 
 .button-row {
   display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
+  justify-content: center;
 }
   
 .button-row button {
@@ -83,14 +82,8 @@
   color: #BFC6D4;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  margin-top: 20px;
 }
   
-.button-row button:disabled {
-  background-color: #A0A5B1;
-  cursor: not-allowed;
-}
-
 .button-row button:hover {
   background-color: #667085;
 }
@@ -128,4 +121,17 @@
 .styled-select option:hover {
   background-color: #667085;
   color: #fff;
+}
+
+.error-container {
+  min-height: 1.2rem; 
+  margin-top: 1.3rem;
+  text-align: center;
+}
+
+.error-message {
+  color: #D72638;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 0;
 }

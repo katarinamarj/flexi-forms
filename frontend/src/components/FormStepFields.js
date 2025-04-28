@@ -1,6 +1,6 @@
 import "../styles/FormStepFields.css";
 
-const FormStepFields = ({ label, setLabel, type, setType, options, setOptions, isRequired, setIsRequired, fields, setFields, setStep }) => {
+const FormStepFields = ({ label, setLabel, type, setType, options, setOptions, isRequired, setIsRequired, fields, setFields, error }) => {
     const handleAddField = () => {
       const newField = {
         label,
@@ -56,13 +56,14 @@ const FormStepFields = ({ label, setLabel, type, setType, options, setOptions, i
           </select>
         </div>
         <div className="button-row">
-          <button onClick={() => setStep(1)}>Back</button>
           <button onClick={handleAddField}>Add Field</button>
-          <button onClick={() => setStep(3)} disabled={fields.length === 0}>Next</button>
+        </div>
+        <div className="error-container">
+            {error && <p className="error-message">Fields are required.</p>}
         </div>
       </div>
     );
   };
   
-  export default FormStepFields;
+export default FormStepFields;
   

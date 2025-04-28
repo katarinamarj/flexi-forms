@@ -1,6 +1,6 @@
 import "../styles/FormStepReview.css";
 
-const FormStepReview = ({ name, description, fields, setStep, handleCreate, message, handleDeleteField }) => {
+const FormStepReview = ({ name, description, fields, handleCreate, handleDeleteField }) => {
     return (
       <div className="form-container">
         <p><strong>Name:</strong> {name}</p>
@@ -30,7 +30,6 @@ const FormStepReview = ({ name, description, fields, setStep, handleCreate, mess
           ))}
         </tbody>
         </table>
-        <button onClick={() => setStep(2)}>Back</button>
         <button onClick={handleCreate} className="create-button">Create</button>
       </div>
     );

@@ -18,12 +18,12 @@ body{
     gap: 1rem;
     margin-bottom: 1rem;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 2.5rem;
 }
 
 .step {
     padding: 0.8rem 1.2rem;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     background-color: #BFC6D4;
     color: #666;
     border: none; 

@@ -1,6 +1,27 @@
+import { useState, useEffect } from "react";
 import "../styles/FormStepReview.css";
+import Modal from "./Modal"; 
 
-const FormStepReview = ({ name, description, fields, handleCreate, handleDeleteField }) => {
+const FormStepReview = ({ name, description, fields, handleCreate, handleDeleteField, publicLink }) => {
+    const [showModal, setShowModal] = useState(false);
+    const [createClicked, setCreateClicked] = useState(false);
+
+    const handleCreateClick = () => {
+      handleCreate();          
+      setCreateClicked(true);  
+    };
+
+    useEffect(() => {
+      if (createClicked && publicLink) {
+        setShowModal(true);
+        setCreateClicked(false); 
+      }
+    }, [publicLink, createClicked]);
+
+    const handleCloseModal = () => {
+      window.location.reload(); 
+    };
+  
     return (
       <div className="form-container">
         <p><strong>Name:</strong> {name}</p>
@@ -30,7 +51,10 @@ const FormStepReview = ({ name, description, fields, handleCreate, handleDeleteF
           ))}
         </tbody>
         </table>
-        <button onClick={handleCreate} className="create-button">Create</button>
+        <button onClick={handleCreateClick} className="create-button">Create</button>
+        {showModal && publicLink && (
+        <Modal publicLink={publicLink} onClose={handleCloseModal} />
+        )}
       </div>
     );
   };

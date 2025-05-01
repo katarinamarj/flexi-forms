@@ -81,6 +81,7 @@ const Templates = () => {
               <tr>
                 <th>Name</th>
                 <th>Description</th>
+                <th>URL link</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -89,10 +90,12 @@ const Templates = () => {
                 <tr key={template.id}>
                   <td>{template.name}</td>
                   <td>{template.description || "—"}</td>
+                  <td>{template.link }</td>
                   <td>
                   <button className="action-button" onClick={() => navigate(`/edit/${template.id}`)}>Edit</button>
                   <button className="action-button" onClick={() => handleDelete(template.id)}>Delete</button>
-                    <button className="action-button">Preview</button>
+                  <button className="action-button">Preview</button>
+                  <button className="action-button">Answers</button>
                   </td>
                 </tr>
               ))}

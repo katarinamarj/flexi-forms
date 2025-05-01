@@ -92,7 +92,6 @@ const Templates = () => {
                   <td>{template.description || "—"}</td>
                   <td>{template.link }</td>
                   <td>
-                  <button className="action-button" onClick={() => navigate(`/edit/${template.id}`)}>Edit</button>
                   <button className="action-button" onClick={() => handleDelete(template.id)}>Delete</button>
                   <button className="action-button">Preview</button>
                   <button className="action-button">Answers</button>

@@ -22,9 +22,8 @@ const Header = () => {
   const isDashboardRoute =
     location.pathname === "/dashboard" ||
     location.pathname === "/templates" ||
-    location.pathname === "/profile" ||
-    location.pathname.startsWith("/edit");
-
+    location.pathname === "/profile" 
+    
   return (
     <header className="header">
     <div className="logo-container">

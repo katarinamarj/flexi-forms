@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 #[Route('/api/form-templates', name: 'api_forms_')]
 class FormTemplateController extends AbstractController
@@ -24,7 +25,6 @@ class FormTemplateController extends AbstractController
         $formTemplate = new FormTemplate();
         $formTemplate->setName($data['name'] ?? '');
         $formTemplate->setDescription($data['description'] ?? null);
-
         $formTemplate->setUser($this->getUser());
 
         $errors = $validator->validate($formTemplate);
@@ -47,7 +47,16 @@ class FormTemplateController extends AbstractController
         $em->persist($formTemplate);
         $em->flush();
 
-        return $this->json(['message' => 'Form Template created successfully'], 201);
+        $frontendUrl = $_ENV['FRONTEND_URL'] ?? 'http://localhost:3000';
+        $formTemplate->setLink($frontendUrl . '/public-form/' . $formTemplate->getId());
+
+        $em->flush();
+
+        return $this->json([
+            'message' => 'Form Template created successfully',
+            'id' => $formTemplate->getId(),
+            'link' => $formTemplate->getLink(),
+        ], 201);
     }
 
     #[Route('', methods: ['GET'])]
@@ -60,6 +69,7 @@ class FormTemplateController extends AbstractController
                 'id' => $form->getId(),
                 'name' => $form->getName(),
                 'description' => $form->getDescription(),
+                'link' => $form->getLink(),
                 'user' => [
                     'id' => $form->getUser()->getId(),
                     'username' => $form->getUser()->getUsername(),
@@ -107,6 +117,7 @@ class FormTemplateController extends AbstractController
             'id' => $form->getId(),
             'name' => $form->getName(),
             'description' => $form->getDescription(),
+            'link' => $form->getLink(),
             'user' => [
                 'id' => $form->getUser()->getId(),
                 'username' => $form->getUser()->getUsername(),
@@ -292,4 +303,36 @@ class FormTemplateController extends AbstractController
 
         return $this->json(['message' => 'Field deleted successfully']);
     }
+
+    #[Route('/public/{id}', methods: ['GET'])]
+    public function publicView(int $id, FormTemplateRepository $repository): JsonResponse
+    {
+        $form = $repository->find($id);
+        if (!$form) {
+           return $this->json(['error' => 'Form Template not found'], 404);
+        }
+
+        $fields = $form->getFields()->toArray();
+
+        $fieldsData = array_map(function (FormField $field) {
+            return [
+               'id' => $field->getId(),
+               'label' => $field->getLabel(),
+               'type' => $field->getType(),
+               'isRequired' => $field->isRequired(),
+               'options' => $field->getOptions(),
+            ];
+        }, $fields);
+
+        $data = [
+           'id' => $form->getId(),
+           'name' => $form->getName(),
+           'description' => $form->getDescription(),
+           'link' => $form->getLink(),
+           'fields' => $fieldsData,
+        ];
+
+        return $this->json($data);
+    }
+
 }

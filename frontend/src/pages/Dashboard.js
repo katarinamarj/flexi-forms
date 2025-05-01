@@ -17,6 +17,7 @@ const Dashboard = () => {
   const [fields, setFields] = useState([]);
   const [message, setMessage] = useState("");
   const [error, setError] = useState('');
+  const [publicLink, setPublicLink] = useState("");
 
   
   const handleCreate = async () => {
@@ -36,7 +37,8 @@ const Dashboard = () => {
         setName("");
         setDescription("");
         setFields([]);
-        setStep(1);
+        setStep(3);
+        setPublicLink(`${window.location.origin}/public-form/${data.id}`); 
       } else {
         setMessage(data.error || "Failed to create form");
       }
@@ -131,6 +133,7 @@ const Dashboard = () => {
             handleCreate={handleCreate}
             message={message}
             handleDeleteField={handleDeleteField}
+            publicLink={publicLink}
           />
         )}      
       </div>

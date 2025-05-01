@@ -31,6 +31,9 @@ class FormTemplate
     #[ORM\OneToMany(mappedBy: 'formTemplate', targetEntity: FormField::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $fields;
 
+    #[ORM\Column(length: 255, unique: true, nullable: true)]
+    private ?string $link = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -80,5 +83,16 @@ class FormTemplate
     public function getFields(): Collection
     {
        return $this->fields;
+    }
+
+    public function getLink(): ?string
+    {
+       return $this->link;
+    }
+
+    public function setLink(string $link): static
+    {
+       $this->link = $link;
+       return $this;
     }
 }

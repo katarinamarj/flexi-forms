@@ -43,17 +43,17 @@ const FormStepFields = ({ label, setLabel, type, setType, options, setOptions, i
          />
         </>
          )}
-        <div className="select-row">
+        <div className="toggle-row">
           <label htmlFor="required">Required</label>
-          <select
+          <label className="switch">
+          <input
+            type="checkbox"
             id="required"
-            className="styled-select"
-            value={isRequired ? "yes" : "no"}
-            onChange={(e) => setIsRequired(e.target.value === "yes")}
-          >
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+            checked={isRequired}
+            onChange={(e) => setIsRequired(e.target.checked)}
+          />
+          <span className="slider round"></span>
+          </label>
         </div>
         <div className="button-row">
           <button onClick={handleAddField}>Add Field</button>

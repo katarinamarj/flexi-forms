@@ -34,6 +34,12 @@ class FormTemplate
     #[ORM\Column(length: 255, unique: true, nullable: true)]
     private ?string $link = null;
 
+    /**
+     * @var Collection<int, FormResponse>
+     */
+    #[ORM\OneToMany(targetEntity: FormResponse::class, mappedBy: 'form')]
+    private Collection $formResponses;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,6 +84,7 @@ class FormTemplate
     public function __construct()
     {
        $this->fields = new ArrayCollection();
+       $this->formResponses = new ArrayCollection();
     }
 
     public function getFields(): Collection
@@ -94,5 +101,35 @@ class FormTemplate
     {
        $this->link = $link;
        return $this;
+    }
+
+    /**
+     * @return Collection<int, FormResponse>
+     */
+    public function getFormResponses(): Collection
+    {
+        return $this->formResponses;
+    }
+
+    public function addFormResponse(FormResponse $formResponse): static
+    {
+        if (!$this->formResponses->contains($formResponse)) {
+            $this->formResponses->add($formResponse);
+            $formResponse->setForm($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormResponse(FormResponse $formResponse): static
+    {
+        if ($this->formResponses->removeElement($formResponse)) {
+            // set the owning side to null (unless already changed)
+            if ($formResponse->getForm() === $this) {
+                $formResponse->setForm(null);
+            }
+        }
+
+        return $this;
     }
 }

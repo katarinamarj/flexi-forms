@@ -29,6 +29,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/form-templates/public, roles: PUBLIC_ACCESS }
+        - { path: ^/api/form-responses, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
 

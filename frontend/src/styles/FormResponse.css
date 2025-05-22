@@ -1,0 +1,127 @@
+.form-responses-container {
+  max-width: 1000px; 
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.responses-header h2 {
+  margin-bottom: 1.5rem;
+  color: #212631;
+}
+
+.view-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.view-buttons button {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.view-buttons .active {
+  background-color: #667085;
+  color: #F0F1F5;
+}
+
+.view-buttons .inactive {
+  background-color: #ccc;
+  color: #666;
+}
+
+.responses-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.response-block {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  background-color: #D1D6E0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.submitted-at {
+  margin-bottom: 1rem;
+  color: #212631;
+}
+
+.question-block {
+  width: 80%;
+  text-align: left; 
+  border: 1px solid #667085;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0 auto;
+  background-color: #D1D6E0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem; 
+}
+
+.question-block strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #4E576A;
+}
+
+.question-block ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  text-align: left;
+}
+
+.question-block li {
+  list-style-type: disc;
+  margin-bottom: 0.3rem;
+}
+
+.no-responses {
+  font-size: 1.1rem;
+  color: #4E576A;
+}
+
+.responses-section button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  background-color: #667085;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.responses-section button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.navigation-buttons button {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.navigation-buttons span {
+  font-weight: bold;
+}

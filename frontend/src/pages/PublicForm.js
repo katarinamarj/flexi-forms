@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/PublicForm.css";
+import { useNavigate } from "react-router-dom";
 
 const PublicForm = () => {
   const { id } = useParams(); 
   const [form, setForm] = useState(null);
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchForm = async () => {
@@ -30,9 +32,29 @@ const PublicForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    try {
+      const response = await fetch("https://localhost:8000/api/form-responses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formId: form.id,
+          answers: formData,
+        }),
+      });
+
+      if (response.ok) {
+        navigate("/thank-you"); 
+      }
+      else {
+        alert("Submission failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+      alert("An error occurred.");
+    }
   };
 
   if (loading) {

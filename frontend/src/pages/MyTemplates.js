@@ -130,7 +130,12 @@ const Templates = () => {
               </td>
               <td>
                 <div className="button-group">
-                  <button className="action-button">Answers</button>
+                   <button
+                    className="action-button"
+                    onClick={() => navigate(`/form-responses/${template.id}`)}
+                  >
+                    Responses
+                  </button>
                   <button
                     className="action-button"
                     onClick={() => {

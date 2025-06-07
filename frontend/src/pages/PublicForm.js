@@ -46,7 +46,7 @@ const PublicForm = () => {
       });
 
       if (response.ok) {
-        navigate("/thank-you"); 
+        navigate("/submission-confirmation"); 
       }
       else {
         alert("Submission failed.");

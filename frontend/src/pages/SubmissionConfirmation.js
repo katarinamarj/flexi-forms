@@ -3,7 +3,7 @@ import logo from '../images/logo.png';
 const SubmissionConfirmation = () => {
   return (
     <div style={{
-      minHeight: '80rem', 
+      minHeight: '35rem', 
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',

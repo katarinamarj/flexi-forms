@@ -22,7 +22,8 @@ const Header = () => {
   const isDashboardRoute =
     location.pathname === "/dashboard" ||
     location.pathname === "/templates" ||
-    location.pathname === "/profile" 
+    location.pathname === "/profile"   ||
+    location.pathname.startsWith("/form-responses/");
     
   return (
     <header className="header">

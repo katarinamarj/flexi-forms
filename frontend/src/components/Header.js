@@ -3,7 +3,6 @@ import "../styles/Header.css";
 import { useNavigate } from 'react-router-dom';
 import { useLocation, Link } from "react-router-dom";
 import logo from '../images/logo.png';
-import { CgProfile } from "react-icons/cg";
 import { IoMdLogOut } from "react-icons/io";
 import { IoDocumentText, IoMenu, IoCreate } from "react-icons/io5";
 
@@ -22,7 +21,6 @@ const Header = () => {
   const isDashboardRoute =
     location.pathname === "/dashboard" ||
     location.pathname === "/templates" ||
-    location.pathname === "/profile"   ||
     location.pathname.startsWith("/form-responses/");
     
   return (
@@ -50,12 +48,6 @@ const Header = () => {
             {location.pathname !== '/templates' && (
               <li>
                 <Link to="/templates"><IoDocumentText /> My templates</Link>
-              </li>
-            )}
-  
-            {location.pathname !== '/profile' && (
-              <li>
-                <Link to="/profile"><CgProfile /> My Profile</Link>
               </li>
             )}
   

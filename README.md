@@ -29,6 +29,7 @@ The Responses page provides two ways to view submitted answers. The summary view
 <img width="1920" height="2352" alt="Image" src="https://github.com/user-attachments/assets/c52dc203-43b9-4309-a95f-cf33324e83da" />
 <img width="1920" height="1541" alt="Image" src="https://github.com/user-attachments/assets/6da67036-6cfe-41b3-bc98-3ebd247cbbd7" />
 
-10. Public Form page
+6. Public Form page
+7. 
 The Public Form page allows anyone with the link to access and fill out the form, without needing to be logged into the application.
 <img width="1920" height="1395" alt="Image" src="https://github.com/user-attachments/assets/1a972b68-7728-405c-9a81-2ad899b37953" />
